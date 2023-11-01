@@ -8,5 +8,6 @@ const exts = (args.exts as string).split(',')
 
 copy(srcPath, distPath, {
   extensions: exts,
-  
+  includeDirectories: false,
+  overwrite: true
 })
