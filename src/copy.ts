@@ -6,17 +6,14 @@ import { Options } from "./options.d.ts"
 export function copy(
     srcPath = './',
     distPath = './dist/',
-    {
-        extensions,
-        includeDirectories
-    } : Options
+    options : Options
 ) : void {
     
     for (const entry of walkSync(
         srcPath,
         {
-            includeDirs: includeDirectories,
-            exts: extensions
+            includeDirs: options.includeDirectories,
+            exts: options.extensions
         }
     )) {
         const fromFilePath = entry.path;
@@ -30,6 +27,9 @@ export function copy(
         
         ensureFileSync(to)
         copySync(
-            fromFilePath, to, {overwrite: true});
+            fromFilePath,
+            to,
+            {overwrite: options.overwrite}
+        );
     }
 }
