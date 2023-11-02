@@ -12,3 +12,4 @@ copy(srcPath, distPath, {
   includeDirectories: false,
   overwrite: true
 })
+
